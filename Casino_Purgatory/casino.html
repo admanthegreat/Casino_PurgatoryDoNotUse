@@ -1,0 +1,305 @@
+<!-- @Author Adam Pavlas -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Easy Win Casino</title>
+    <script src = "casino.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="casino.css">
+</head>
+<body onload="getPoints()">
+<h2>Hey, welcome to my Casino!!! <small>Try to reach more than 100000 points to escape! But be careful, if you go below
+    -2000 points you will be considered in debt to this casino forever and also trapped too. Also by clicking the button below
+    you can enter the dungeon to try to conquer it while earning points at the same time! Good Luck! :D </small> </h2>
+<h1 id="points"> Total Points: </h1>
+<button id="enter" class="btn-lg"><a href="casinoRPG.html">Dive Deep into the Dungeon</a></button>
+<br>
+<h1>Shop!!!</h1>
+<table border="5">
+    <tr>
+        <th>Item</th>
+        <th>Description</th>
+        <th>Cost</th>
+    </tr>
+    <tr>
+        <td class="slot"><h2>Gary the Gamblo-Snail</h2> <p><img src="Gary.png" width="200px"></p></td>
+        <td class="slot">Garry will automatically spin the slot machine every ten seconds.
+        Also, the initial bet of said slot machine is covered by Gary kid's
+        college fund, so it won't cost you a dime (after purchasing Garry). Note: Gary IS impacted by other
+        purchases such as Fred, From HR, but not Gun however.</td>
+        <td id="gary" class="slot"><button  class="btn-lg btn-primary" onclick="activateGary()">Buy: 3000</button></td>
+    </tr>
+    <tr>
+        <td class="slot"><h2>A gun</h2> <p><img src="Gun.png" width="200px"></p></td>
+        <td class="slot">You can use the gun to give you a 25% chance, on every loss, to prevent
+        losing money.</td>
+        <td id="gun" class="slot"><button  class="btn-lg btn-primary" onclick="activateGun()">Buy: 1000</button></td>
+    </tr>
+    <tr>
+        <td class="slot"><h2>Fred, From HR</h2> <p><img src="Fred_FromHR.png" width="200px"></p></td>
+        <td class="slot">Fred, From HR is an expert in Human Resources. Fred, From HR has a 50% chance to
+        increase your winnings by 50% and a 50% to reduce any losses by 50%.</td>
+        <td id="fred" class="slot"><button  class="btn-lg btn-primary" onclick="activateFred()">Buy: 2000</button></td>
+    </tr>
+    <tr>
+        <td class="slot"><h2>A bribe to god</h2> <p><img src="God.png" width="200px"></p></td>
+        <td class="slot">It's basically an extra life. If you go bankrupt, the extra life will save you from
+        losing ONE TIME ONLY!</td>
+        <td id="god" class="slot"><button  class="btn-lg btn-primary" onclick="activateGod()">Buy: 2000</button></td>
+    </tr>
+</table>
+<br> <br>
+<table class="rules">
+    <tr>
+        <th>
+        </th>
+        <th>
+            <h1 class="rulesHeader"> Guessing Game Rules!!! :D</h1>
+        </th>
+    </tr>
+    <tr>
+        <td class="darkCyan">
+            <h3 class="rulesHeader">Overview!</h3>
+        </td>
+        <td>
+            <p class="rulesDescription">
+                The rules are simple! You pick a maximum number,
+                and then the computer will generate
+                a random number between your max and 0 inclusive.
+                You must then guess what that random number is! Sound too hard?
+                Well this casino plays fair here. :) Everytime you guess wrong,
+                we'll tell you if the random number is higher or lower than what you guessed!
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td class="darkCyan">
+            <h3 class="rulesHeader">Points!</h3>
+        </td>
+        <td>
+            <p class="rulesDescription">
+                Points are rewarded on a more risk more reward basis.
+                The higher the maximum, then the higher the reward.
+                For example, if your maximum is 100, then you will earn 100 points
+                if you guess correctly. However, the more tries it takes you
+                to guess correctly, the more your reward gets decreased. For
+                example, if the maximum is 100, and you take 5 tries to guess,
+                then you will only get 20 points instead of 10. (100/5)
+            </p>
+        </td>
+    </tr>
+</table>
+<br>
+<h2> Please enter your: <br> </h2>
+<p>
+    Maximum: <input id="max" type="text"> <br>
+</p>
+<button onclick="randomize()">Randomize!</button>
+<h1> Game Summary: </h1>
+<table class="game" id="guessing">
+    <tr>
+        <th>Guess: </th>
+        <th>Number: </th>
+        <th>Result: </th>
+    </tr>
+</table>
+<br> <br> <br>
+<table class="rules">
+    <tr>
+        <th>
+        </th>
+        <th>
+            <h1 class="rulesHeader"> Blackjack Rules!!! :D</h1>
+        </th>
+    </tr>
+    <tr>
+        <td class="darkCyan">
+            <h3 class="rulesHeader">Overview!</h3>
+        </td>
+        <td>
+            <p class="rulesDescription">
+                Blackjack is a fairly simple game. You and the dealer each draw two cards. You get to see the dealer's
+                first card, but their second card is hidden. The goal is to draw cards with a total value as close to 21
+                as possible without going over. If you go over, then you bust and lose. When it's your turn you will see
+                your total value from the two cards you have drawn, and then you will choose to either draw another card to add
+                to your value or pass and let the dealer go. Once you pass or draw to 21, then the dealer goes. The dealer's second
+                card will be revealed and the dealer will continue drawing until they either end up with a higher value than you or
+                until they bust. The card values are as follows: 2-10 are face value, jack, queen, and king are ten, and an ace is 11.
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td class="darkCyan">
+            <h3 class="rulesHeader">Points!</h3>
+        </td>
+        <td>
+            <p class="rulesDescription">
+                Points are super simple here. You earn triple the amount of points you put in. However,
+                if you lose then you lose double your bet. If you and the dealer both
+                draw with 21 then, your points are returned.
+            </p>
+        </td>
+    </tr>
+</table>
+<br> <br> <br>
+<h1> Blackjack!!! :)</h1>
+<p id="start">
+    <label> Enter your bet (min 100 max 1000): </label>
+    <input id="bet" type="number">
+    <button class="btn-lg btn-primary" onclick="startBlackJack()"> Start </button>
+</p>
+<br>
+<table class="game" border="1">
+    <tr>
+        <th></th>
+        <th> <h1>Cards:</h1> </th>
+        <th> <h1>Total:</h1> </th>
+    </tr>
+    <tr>
+        <td> <h2>Dealer: </h2> </td>
+        <td> <p id="dealerCards"> </p></td>
+        <td> <p id="dealerTotal"> </p></td>
+    </tr>
+    <tr>
+        <td> <h2>Player (You): </h2> </td>
+        <td> <p id="playerCards"> </p></td>
+        <td> <p id="playerTotal"> </p></td>
+    </tr>
+</table>
+<br>
+<h3 id="resultText">
+
+</h3>
+<br>
+<p id="play">
+
+</p>
+<br> <br>
+<p id="startAgain">
+
+</p>
+
+<br> <br> <br>
+<table class="rules">
+    <tr>
+        <th>
+        </th>
+        <th>
+            <h1 class="rulesHeader"> Slots Rules!!! :D</h1>
+        </th>
+    </tr>
+    <tr>
+        <td class="darkCyan">
+            <h3 class="rulesHeader">Overview!</h3>
+        </td>
+        <td>
+            <p class="rulesDescription">
+                My slots are simple! You spin, and all nine of the squares will become a random symbol.
+                That's it!
+            </p>
+        </td>
+    </tr>
+    <tr>
+        <td class="darkCyan">
+            <h3 class="rulesHeader">Points!</h3>
+        </td>
+        <td>
+            <p class="rulesDescription">
+                Points are a bit more complicated here. You always bet 100, and each symbol corresponds to a number
+                which is the amount that you will win if you get three in a row whether horizontally, diagonally, or vertically.
+                The tricky part comes in with the multipliers seen all around the edges. Basically, if you get
+                three in a row horizontally you earn the points listed face value (nothing special), but if you
+                get three in a row vertically, then you earn double what is rewarded, and diagonally is triple! And,
+                if you are lucky enough to fill all nine squares with the same symbol, then you win the jackpot awarding
+                100 times the reward!
+            </p>
+        </td>
+    </tr>
+</table>
+<br> <br> <br>
+<h1> Slots!!! :)</h1>
+<br> <br>
+<table border="1">
+    <tr>
+        <th> Symbol: </th>
+        <th colspan="6"> Point worth:</th>
+    </tr>
+    <tr>
+        <td><img src="slotSymbol/cherry.png" width="100px"></td>
+        <td class="slot"><h1>50</h1></td>
+        <td><img src="slotSymbol/lemon.png" width="100px"></td>
+        <td class="slot"><h1>300</h1></td>
+        <td><img src="slotSymbol/bell.png" width="100px"></td>
+        <td class="slot"><h1>600</h1></td>
+
+    </tr>
+    <tr>
+        <td><img src="slotSymbol/banana.png" width="100px"></td>
+        <td class="slot"><h1>100</h1></td>
+        <td><img src="slotSymbol/orange.png" width="100px"></td>
+        <td class="slot"><h1>400</h1></td>
+        <td><img src="slotSymbol/777.png" width="100px"></td>
+        <td class="slot"><h1>777</h1></td>
+    </tr>
+    <tr>
+        <td><img src="slotSymbol/grape.png" width="100px"></td>
+        <td class="slot"><h1>200</h1></td>
+        <td><img src="slotSymbol/watermelon.png" width="100px"></td>
+        <td class="slot"><h1>500</h1></td>
+        <td><img src="slotSymbol/bar.png" width="100px"></td>
+        <td class="slot"><h1>1000</h1></td>
+    </tr>
+</table>
+<br>
+<table border="10">
+    <tr>
+        <th> <h1>x3</h1> </th>
+        <th> <h1>x2</h1> </th>
+        <th> <h1>x2</h1> </th>
+        <th> <h1>x2</h1> </th>
+        <th> <h1>x3</h1> </th>
+    </tr>
+    <tr>
+        <td class="slotMultiply"> <h1>x1</h1> </td>
+        <td id="slotUpperLeft"> <h1 class="slot">?</h1> </td>
+        <td id="slotUpperMiddle"> <h1 class="slot">?</h1> </td>
+        <td id="slotUpperRight"> <h1 class="slot">?</h1> </td>
+        <td class="slotMultiply"> <h1>x1</h1> </td>
+    </tr>
+    <tr>
+        <td class="slotMultiply"> <h1>x1</h1> </td>
+        <td id="slotLeft"> <h1 class="slot">?</h1> </td>
+        <td id="slotMiddle"> <h1 class="slot">?</h1> </td>
+        <td id="slotRight"> <h1 class="slot">?</h1> </td>
+        <td class="slotMultiply"> <h1>x1</h1> </td>
+    </tr>
+    <tr>
+        <td class="slotMultiply"> <h1>x1</h1> </td>
+        <td id="slotLowerLeft"> <h1 class="slot">?</h1> </td>
+        <td id="slotLowerMiddle"> <h1 class="slot">?</h1> </td>
+        <td id="slotLowerRight"> <h1 class="slot">?</h1> </td>
+        <td class="slotMultiply"> <h1>x1</h1> </td>
+    </tr>
+    <tr class="slotMultiply">
+        <td class="slotMultiply"> <h1>x3</h1> </td>
+        <td class="slotMultiply"> <h1>x2</h1> </td>
+        <td class="slotMultiply"> <h1>x2</h1> </td>
+        <td class="slotMultiply"> <h1>x2</h1> </td>
+        <td class="slotMultiply"> <h1>x3</h1> </td>
+    </tr>
+</table>
+<br>
+<label><h2>Bet: 100</h2></label>
+<p id="slotStart">
+    <button class="btn-lg btn-primary" onclick="startSlots(-100)"> Spin! </button>
+</p>
+<p id="slotEnd">
+
+</p>
+
+<h1 id="garyTotal"></h1>
+<h1 id="garySpins"></h1>
+<br> <br> <br>
+</body>
+</html>

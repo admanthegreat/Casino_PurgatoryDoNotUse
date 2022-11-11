@@ -1,0 +1,43 @@
+.rulesHeader{
+    font-family: "Comic Sans MS";
+    color: darkblue;
+    background-color: cornflowerblue;
+}
+
+.rulesDescription{
+    font-family: Helvetica;
+    color: darkblue;
+    background-color: cadetblue;
+}
+td{
+    background-color: black;
+}
+tr{
+    background-color: darkcyan;
+}
+.darkCyan{
+    background-color: darkcyan;
+}
+.rules{
+    border: thick solid blue;
+}
+.game{
+    border: thick solid darkcyan;
+    color: aqua;
+}
+.slotMultiply{
+    background-color: darkcyan;
+}
+
+.slot{
+    color: white;
+}
+h1{
+    font-size: xxx-large;
+}
+#enter{
+    background-color: burlywood;
+    color: black;
+    font-size: 30px;
+    padding: 16px;
+}
